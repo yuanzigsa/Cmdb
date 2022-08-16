@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="logo" src="https://user-images.githubusercontent.com/30451380/184796756-d5a87552-402d-4a00-8ba6-77221c2fb75d.png">
+	<img alt="logo" src="https://user-images.githubusercontent.com/30451380/184797168-f358fbd9-5381-47d5-b169-9f873df642f8.png">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">IDC资产运维管理系统</h1>
 <h4 align="center">基于SpringBoot+Vue的若依框架</h4>
