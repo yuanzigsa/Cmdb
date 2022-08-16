@@ -15,25 +15,22 @@
         </el-col>
       </el-form>
     </el-row>
-    <el-row :gutter="24" >
-      <el-col :span="4">
-        <div class="grid-content bg-purple">内容1
 
-      </div></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple">内容2</div></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple">内容3</div></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple">内容4</div></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple">内容4</div></el-col>
-    </el-row>
-    <el-row :gutter="24">  <!-- 最大24 给20不合理 -->
-      <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
-    <el-row :gutter="24">
-      <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="16"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+<div style="margin-top: 10px"></div>
+    <div class="outer">
+        <div class="bg">
+          <div class="inner"></div>
+          <div>Name</div>
+        </div>
+        <div class="bg">
+          <div class="inner"></div>
+          <div>Name</div>
+        </div>
+        <div class="bg">
+          <div class="inner"></div>
+          <div>Name</div>
+        </div>
+    </div>
   </div>
 </template>
 <script>
@@ -96,5 +93,47 @@ export default {
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;
+}
+
+.outer {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.bg::after {
+    display: flex;
+    content: '';
+    /* padding-bottom: 100%; */
+    width: 1;
+    height: 2;
+}
+
+.bg {
+    flex: 1;
+}
+.inner {
+    flex: 1;
+}
+.bg:nth-child(1) {
+    background-color: crimson;
+    margin-right: 15px;
+}
+.inner:nth-child(1) {
+    background-color: black;
+}
+.bg:nth-child(2) {
+    background: rgb(0, 128, 255);
+    margin-right: 15px;
+}
+.inner:nth-child(2) {
+    background-color: cyan;
+    margin-bottom: auto;
+}
+.bg:nth-child(3) {
+    background: green;
+    margin-right: 15px;
+}
+.inner:nth-child(3) {
+    background-color: #fff;
+    margin-bottom: auto;
 }
 </style>
