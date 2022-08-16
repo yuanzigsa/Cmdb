@@ -1,11 +1,10 @@
 <p align="center">
-	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-d3d0a9303e11d522a06cd263f3079027715.png">
+	<img alt="logo" src="https://user-images.githubusercontent.com/30451380/184796756-d5a87552-402d-4a00-8ba6-77221c2fb75d.png">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">IDC资产运维管理系统</h1>
 <h4 align="center">基于SpringBoot+Vue的若依框架</h4>
 <p align="center">
 </p>
-
 
 ## 平台简介
 
