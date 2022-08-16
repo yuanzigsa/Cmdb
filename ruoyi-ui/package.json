@@ -1,8 +1,8 @@
 {
-  "name": "ruoyi",
+  "name": "shijietong",
   "version": "3.8.2",
   "description": "资产运维管理系统",
-  "author": "若依",
+  "author": "Yuanzi",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
