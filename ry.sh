@@ -13,6 +13,7 @@ then
     exit 1
 fi
 
+
 if [ "$AppName" = "" ];
 then
     echo -e "\033[0;31m 未输入应用名 \033[0m"
