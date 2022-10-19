@@ -61,6 +61,13 @@
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
 
+        <!-- 资产管理-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>asset_management</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>

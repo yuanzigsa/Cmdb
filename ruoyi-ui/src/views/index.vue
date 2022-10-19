@@ -96,7 +96,7 @@ export default {
 
 .outer {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 .bg::after {
     display: flex;
