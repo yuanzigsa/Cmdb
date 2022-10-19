@@ -12,8 +12,7 @@ import org.springframework.context.annotation.ComponentScans;
  * 
  * @author yuanzi
  */
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class },scanBasePackages = {"com.cmdb","com.yuanzi"})
-@MapperScan("com.yuanzi.asset.mapper")
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 public class RuoYiApplication {
     public static void main(String[] args) {
         // System.setProperty("spring.devtools.restart.enabled", "false");
