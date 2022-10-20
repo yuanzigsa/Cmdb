@@ -25,7 +25,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 通用http发送方法
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class HttpUtils
 {

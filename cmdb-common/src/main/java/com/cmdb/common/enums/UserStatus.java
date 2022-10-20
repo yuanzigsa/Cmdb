@@ -3,7 +3,7 @@ package com.cmdb.common.enums;
 /**
  * 用户状态
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public enum UserStatus
 {

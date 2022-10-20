@@ -6,7 +6,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 基础异常
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class BaseException extends RuntimeException
 {

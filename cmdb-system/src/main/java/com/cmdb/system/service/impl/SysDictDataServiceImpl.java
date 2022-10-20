@@ -11,7 +11,7 @@ import com.cmdb.system.service.ISysDictDataService;
 /**
  * 字典 业务层处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService

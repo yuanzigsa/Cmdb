@@ -3,7 +3,7 @@ package com.cmdb.common.enums;
 /**
  * 数据源
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public enum DataSourceType
 {

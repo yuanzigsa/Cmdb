@@ -34,7 +34,7 @@ import com.cmdb.system.service.ISysUserService;
 /**
  * 用户信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/system/user")

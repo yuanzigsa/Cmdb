@@ -16,7 +16,7 @@ import com.cmdb.framework.interceptor.RepeatSubmitInterceptor;
 /**
  * 通用配置
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer

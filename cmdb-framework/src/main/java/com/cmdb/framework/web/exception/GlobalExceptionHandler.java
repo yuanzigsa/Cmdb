@@ -18,7 +18,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 全局异常处理器
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler

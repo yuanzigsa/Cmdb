@@ -7,7 +7,7 @@ import com.cmdb.common.core.domain.entity.SysMenu;
 /**
  * 菜单表 数据层
  *
- * @author ruoyi
+ * @author yuanzi
  */
 public interface SysMenuMapper
 {

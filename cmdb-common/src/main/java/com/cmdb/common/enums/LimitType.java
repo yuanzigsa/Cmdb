@@ -3,7 +3,7 @@ package com.cmdb.common.enums;
 /**
  * 限流类型
  *
- * @author ruoyi
+ * @author yuanzi
  */
 
 public enum LimitType

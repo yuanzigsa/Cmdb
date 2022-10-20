@@ -27,7 +27,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * Mybatis支持*匹配扫描包
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Configuration
 public class MyBatisConfig

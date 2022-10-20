@@ -3,7 +3,7 @@ package com.cmdb.common.enums;
 /**
  * 业务操作类型
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public enum BusinessType
 {

@@ -24,7 +24,7 @@ import com.cmdb.framework.config.ServerConfig;
 /**
  * 通用请求处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/common")

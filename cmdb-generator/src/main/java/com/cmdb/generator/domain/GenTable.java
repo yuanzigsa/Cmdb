@@ -11,7 +11,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 业务表 gen_table
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class GenTable extends BaseEntity
 {

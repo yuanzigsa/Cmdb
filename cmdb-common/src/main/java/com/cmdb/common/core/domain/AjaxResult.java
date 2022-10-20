@@ -7,7 +7,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 操作消息提醒
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class AjaxResult extends HashMap<String, Object>
 {

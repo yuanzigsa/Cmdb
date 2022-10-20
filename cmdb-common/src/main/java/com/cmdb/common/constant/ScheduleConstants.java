@@ -3,7 +3,7 @@ package com.cmdb.common.constant;
 /**
  * 任务调度通用常量
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class ScheduleConstants
 {

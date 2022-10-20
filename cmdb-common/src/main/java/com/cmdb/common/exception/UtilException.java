@@ -3,7 +3,7 @@ package com.cmdb.common.exception;
 /**
  * 工具类异常
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class UtilException extends RuntimeException
 {

@@ -33,7 +33,7 @@ import com.cmdb.system.service.ISysUserService;
 /**
  * 角色信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/system/role")

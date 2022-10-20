@@ -14,7 +14,7 @@ import com.cmdb.system.service.ISysPostService;
 /**
  * 岗位信息 服务层处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Service
 public class SysPostServiceImpl implements ISysPostService

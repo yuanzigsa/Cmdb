@@ -64,7 +64,7 @@
         <!-- 资产管理-->
         <dependency>
             <groupId>com.cmdb</groupId>
-            <artifactId>asset_management</artifactId>
+            <artifactId>cmdb-asset</artifactId>
         </dependency>
 
 

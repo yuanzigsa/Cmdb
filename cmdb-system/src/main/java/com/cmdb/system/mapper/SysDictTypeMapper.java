@@ -7,7 +7,7 @@ import com.cmdb.common.core.domain.entity.SysDictType;
 /**
  * 字典表 数据层
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Mapper
 public interface SysDictTypeMapper

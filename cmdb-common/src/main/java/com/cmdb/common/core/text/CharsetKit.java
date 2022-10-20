@@ -7,7 +7,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 字符集工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class CharsetKit
 {

@@ -11,7 +11,7 @@ import com.cmdb.common.utils.spring.SpringUtils;
 /**
  * 字典工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class DictUtils
 {

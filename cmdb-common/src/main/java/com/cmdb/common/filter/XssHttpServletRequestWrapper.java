@@ -15,7 +15,7 @@ import com.cmdb.common.utils.html.EscapeUtil;
 /**
  * XSS过滤处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper
 {

@@ -26,7 +26,7 @@ import com.cmdb.system.service.ISysUserOnlineService;
 /**
  * 在线用户监控
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/monitor/online")

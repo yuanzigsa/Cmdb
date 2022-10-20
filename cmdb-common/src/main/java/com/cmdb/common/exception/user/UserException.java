@@ -5,7 +5,7 @@ import com.cmdb.common.exception.base.BaseException;
 /**
  * 用户信息异常类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class UserException extends BaseException
 {

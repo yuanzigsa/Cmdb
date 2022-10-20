@@ -26,7 +26,7 @@ import com.cmdb.system.service.ISysDeptService;
 /**
  * 部门信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/system/dept")

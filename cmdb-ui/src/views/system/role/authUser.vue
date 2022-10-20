@@ -29,7 +29,6 @@
       <el-col :span="1.5">
         <el-button
           type="primary"
-          plain
           icon="el-icon-plus"
           size="mini"
           @click="openSelectUser"
@@ -39,7 +38,6 @@
       <el-col :span="1.5">
         <el-button
           type="danger"
-          plain
           icon="el-icon-circle-close"
           size="mini"
           :disabled="multiple"
@@ -50,7 +48,6 @@
       <el-col :span="1.5">
         <el-button
           type="warning"
-          plain
           icon="el-icon-close"
           size="mini"
           @click="handleClose"

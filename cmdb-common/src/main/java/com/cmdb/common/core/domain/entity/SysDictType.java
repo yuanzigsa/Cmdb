@@ -12,7 +12,7 @@ import com.cmdb.common.core.domain.BaseEntity;
 /**
  * 字典类型表 sys_dict_type
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class SysDictType extends BaseEntity
 {

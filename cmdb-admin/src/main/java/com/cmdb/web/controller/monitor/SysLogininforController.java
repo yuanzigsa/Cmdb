@@ -22,7 +22,7 @@ import com.cmdb.system.service.ISysLogininforService;
 /**
  * 系统访问记录
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/monitor/logininfor")

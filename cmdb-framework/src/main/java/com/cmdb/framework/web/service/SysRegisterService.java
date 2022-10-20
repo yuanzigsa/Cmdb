@@ -20,7 +20,7 @@ import com.cmdb.system.service.ISysUserService;
 /**
  * 注册校验方法
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Component
 public class SysRegisterService

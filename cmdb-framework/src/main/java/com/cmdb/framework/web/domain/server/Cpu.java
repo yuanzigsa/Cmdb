@@ -5,7 +5,7 @@ import com.cmdb.common.utils.Arith;
 /**
  * CPU相关信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class Cpu
 {

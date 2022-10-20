@@ -14,7 +14,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * Repeatable 过滤器
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class RepeatableFilter implements Filter
 {

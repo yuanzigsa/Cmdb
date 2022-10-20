@@ -6,7 +6,7 @@ import com.cmdb.system.domain.SysConfig;
 /**
  * 参数配置 服务层
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public interface ISysConfigService
 {

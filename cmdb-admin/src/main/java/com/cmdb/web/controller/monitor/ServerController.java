@@ -10,7 +10,7 @@ import com.cmdb.framework.web.domain.Server;
 /**
  * 服务器监控
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/monitor/server")

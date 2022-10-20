@@ -7,7 +7,7 @@ import com.cmdb.common.constant.Constants;
 /**
  * VelocityEngine工厂
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class VelocityInitializer
 {

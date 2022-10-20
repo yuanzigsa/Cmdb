@@ -11,7 +11,7 @@ import com.cmdb.common.enums.LimitType;
 /**
  * 限流注解
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

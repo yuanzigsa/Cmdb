@@ -3,7 +3,7 @@ package com.cmdb.common.exception;
 /**
  * 全局异常
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class GlobalException extends RuntimeException
 {

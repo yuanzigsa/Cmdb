@@ -27,7 +27,7 @@ import com.cmdb.system.service.ISysUserService;
 /**
  * 个人信息 业务处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 @RequestMapping("/system/user/profile")

@@ -6,7 +6,7 @@ import com.cmdb.system.domain.SysNotice;
 /**
  * 公告 服务层
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public interface ISysNoticeService
 {

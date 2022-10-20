@@ -3,7 +3,7 @@ package com.cmdb.common.enums;
 /**
  * 操作人类别
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public enum OperatorType
 {

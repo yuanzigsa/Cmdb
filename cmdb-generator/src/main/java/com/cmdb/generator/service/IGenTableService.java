@@ -7,7 +7,7 @@ import com.cmdb.generator.domain.GenTable;
 /**
  * 业务 服务层
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public interface IGenTableService
 {

@@ -9,16 +9,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="设备类型" prop="deviceType">
-        <el-select v-model="queryParams.deviceType" placeholder="请选择设备类型" clearable>
-          <el-option
-            v-for="dict in dict.type.device_type"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
       <el-form-item label="设备型号" prop="deviceModel">
         <el-input
           v-model="queryParams.deviceModel"
@@ -35,14 +25,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="机柜编号" prop="cabinetNo">
-        <el-input
-          v-model="queryParams.cabinetNo"
-          placeholder="请输入机柜编号"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="所属机房" prop="room">
         <el-input
           v-model="queryParams.room"
@@ -50,16 +32,6 @@
           clearable
           @keyup.enter.native="handleQuery"
         />
-      </el-form-item>
-      <el-form-item label="业务类型" prop="businessType">
-        <el-select v-model="queryParams.businessType" placeholder="请选择业务类型" clearable>
-          <el-option
-            v-for="dict in dict.type.asset_business"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -71,7 +43,6 @@
       <el-col :span="1.5">
         <el-button
           type="primary"
-          plain
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
@@ -81,7 +52,6 @@
       <el-col :span="1.5">
         <el-button
           type="success"
-          plain
           icon="el-icon-edit"
           size="mini"
           :disabled="single"
@@ -92,7 +62,6 @@
       <el-col :span="1.5">
         <el-button
           type="danger"
-          plain
           icon="el-icon-delete"
           size="mini"
           :disabled="multiple"
@@ -103,7 +72,6 @@
       <el-col :span="1.5">
         <el-button
           type="warning"
-          plain
           icon="el-icon-download"
           size="mini"
           @click="handleExport"
@@ -115,7 +83,7 @@
 
     <el-table v-loading="loading" :data="switchManList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="资产序号" align="center" prop="number" />
+<!--      <el-table-column label="资产序号" align="center" prop="number" />-->
       <el-table-column label="SN编号" align="center" prop="sn" />
       <el-table-column label="设备类型" align="center" prop="deviceType">
         <template slot-scope="scope">
@@ -151,7 +119,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -239,7 +207,7 @@ export default {
       // 查询参数
       queryParams: {
         pageNum: 1,
-        pageSize: 10,
+        pageSize: 13,
         sn: null,
         deviceType: null,
         deviceModel: null,

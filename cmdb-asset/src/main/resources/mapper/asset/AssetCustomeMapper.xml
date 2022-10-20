@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetCustomeMapper">
+    
+    <resultMap type="AssetCustome" id="AssetCustomeResult">
+        <result property="number"    column="number"    />
+        <result property="sn"    column="SN"    />
+        <result property="设备类型"    column="设备类型"    />
+        <result property="客户归属"    column="客户归属"    />
+        <result property="上架时间"    column="上架时间"    />
+        <result property="业务ip"    column="业务IP"    />
+        <result property="管理ip"    column="管理IP"    />
+        <result property="机柜编号"    column="机柜编号"    />
+        <result property="所属机房"    column="所属机房"    />
+        <result property="业务类型"    column="业务类型"    />
+    </resultMap>
+
+    <sql id="selectAssetCustomeVo">
+        select number, SN, 设备类型, 客户归属, 上架时间, 业务IP, 管理IP, 机柜编号, 所属机房, 业务类型 from asset_custome
+    </sql>
+
+    <select id="selectAssetCustomeList" parameterType="AssetCustome" resultMap="AssetCustomeResult">
+        <include refid="selectAssetCustomeVo"/>
+        <where>  
+            <if test="sn != null  and sn != ''"> and SN = #{sn}</if>
+            <if test="设备类型 != null  and 设备类型 != ''"> and 设备类型 = #{设备类型}</if>
+            <if test="客户归属 != null  and 客户归属 != ''"> and 客户归属 = #{客户归属}</if>
+            <if test="上架时间 != null  and 上架时间 != ''"> and 上架时间 = #{上架时间}</if>
+            <if test="业务ip != null  and 业务ip != ''"> and 业务IP = #{业务ip}</if>
+            <if test="管理ip != null  and 管理ip != ''"> and 管理IP = #{管理ip}</if>
+            <if test="机柜编号 != null  and 机柜编号 != ''"> and 机柜编号 = #{机柜编号}</if>
+            <if test="所属机房 != null  and 所属机房 != ''"> and 所属机房 = #{所属机房}</if>
+            <if test="业务类型 != null  and 业务类型 != ''"> and 业务类型 = #{业务类型}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetCustomeByNumber" parameterType="Long" resultMap="AssetCustomeResult">
+        <include refid="selectAssetCustomeVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetCustome" parameterType="AssetCustome">
+        insert into asset_custome
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="number != null">number,</if>
+            <if test="sn != null">SN,</if>
+            <if test="设备类型 != null">设备类型,</if>
+            <if test="客户归属 != null">客户归属,</if>
+            <if test="上架时间 != null">上架时间,</if>
+            <if test="业务ip != null">业务IP,</if>
+            <if test="管理ip != null">管理IP,</if>
+            <if test="机柜编号 != null">机柜编号,</if>
+            <if test="所属机房 != null">所属机房,</if>
+            <if test="业务类型 != null">业务类型,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="number != null">#{number},</if>
+            <if test="sn != null">#{sn},</if>
+            <if test="设备类型 != null">#{设备类型},</if>
+            <if test="客户归属 != null">#{客户归属},</if>
+            <if test="上架时间 != null">#{上架时间},</if>
+            <if test="业务ip != null">#{业务ip},</if>
+            <if test="管理ip != null">#{管理ip},</if>
+            <if test="机柜编号 != null">#{机柜编号},</if>
+            <if test="所属机房 != null">#{所属机房},</if>
+            <if test="业务类型 != null">#{业务类型},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetCustome" parameterType="AssetCustome">
+        update asset_custome
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sn != null">SN = #{sn},</if>
+            <if test="设备类型 != null">设备类型 = #{设备类型},</if>
+            <if test="客户归属 != null">客户归属 = #{客户归属},</if>
+            <if test="上架时间 != null">上架时间 = #{上架时间},</if>
+            <if test="业务ip != null">业务IP = #{业务ip},</if>
+            <if test="管理ip != null">管理IP = #{管理ip},</if>
+            <if test="机柜编号 != null">机柜编号 = #{机柜编号},</if>
+            <if test="所属机房 != null">所属机房 = #{所属机房},</if>
+            <if test="业务类型 != null">业务类型 = #{业务类型},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetCustomeByNumber" parameterType="Long">
+        delete from asset_custome where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetCustomeByNumbers" parameterType="String">
+        delete from asset_custome where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

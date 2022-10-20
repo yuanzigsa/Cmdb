@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetDownipMapper">
+    
+    <resultMap type="AssetDownip" id="AssetDownipResult">
+        <result property="number"    column="number"    />
+        <result property="ip"    column="IP"    />
+        <result property="company"    column="company"    />
+        <result property="room"    column="room"    />
+        <result property="business"    column="business"    />
+    </resultMap>
+
+    <sql id="selectAssetDownipVo">
+        select number, IP, company, room, business from asset_downip
+    </sql>
+
+    <select id="selectAssetDownipList" parameterType="AssetDownip" resultMap="AssetDownipResult">
+        <include refid="selectAssetDownipVo"/>
+        <where>  
+            <if test="ip != null  and ip != ''"> and IP = #{ip}</if>
+            <if test="company != null  and company != ''"> and company = #{company}</if>
+            <if test="room != null  and room != ''"> and room = #{room}</if>
+            <if test="business != null  and business != ''"> and business = #{business}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetDownipByNumber" parameterType="Long" resultMap="AssetDownipResult">
+        <include refid="selectAssetDownipVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetDownip" parameterType="AssetDownip" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_downip
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">IP,</if>
+            <if test="company != null">company,</if>
+            <if test="room != null">room,</if>
+            <if test="business != null">business,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">#{ip},</if>
+            <if test="company != null">#{company},</if>
+            <if test="room != null">#{room},</if>
+            <if test="business != null">#{business},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetDownip" parameterType="AssetDownip">
+        update asset_downip
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ip != null">IP = #{ip},</if>
+            <if test="company != null">company = #{company},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="business != null">business = #{business},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetDownipByNumber" parameterType="Long">
+        delete from asset_downip where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetDownipByNumbers" parameterType="String">
+        delete from asset_downip where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

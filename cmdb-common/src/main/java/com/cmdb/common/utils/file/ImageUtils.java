@@ -16,7 +16,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 图片处理工具类
  *
- * @author ruoyi
+ * @author yuanzi
  */
 public class ImageUtils
 {

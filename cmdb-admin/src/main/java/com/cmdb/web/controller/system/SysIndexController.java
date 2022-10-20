@@ -9,7 +9,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 首页
  *
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 public class SysIndexController

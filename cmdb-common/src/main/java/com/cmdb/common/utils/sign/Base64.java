@@ -3,7 +3,7 @@ package com.cmdb.common.utils.sign;
 /**
  * Base64工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public final class Base64
 {

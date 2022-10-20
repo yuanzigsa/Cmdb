@@ -9,7 +9,7 @@ import com.cmdb.common.core.controller.BaseController;
 /**
  * swagger 接口
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Controller
 @RequestMapping("/tool/swagger")

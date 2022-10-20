@@ -6,7 +6,7 @@ import com.cmdb.common.core.domain.entity.SysUser;
 /**
  * 用户 业务层
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public interface ISysUserService
 {

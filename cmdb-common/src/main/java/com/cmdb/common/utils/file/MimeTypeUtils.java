@@ -3,7 +3,7 @@ package com.cmdb.common.utils.file;
 /**
  * 媒体类型工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class MimeTypeUtils
 {

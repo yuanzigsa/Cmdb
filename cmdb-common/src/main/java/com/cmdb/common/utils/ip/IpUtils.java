@@ -8,7 +8,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 获取IP方法
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class IpUtils
 {

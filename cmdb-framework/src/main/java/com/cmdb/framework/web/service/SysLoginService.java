@@ -28,7 +28,7 @@ import com.cmdb.system.service.ISysUserService;
 /**
  * 登录校验方法
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Component
 public class SysLoginService

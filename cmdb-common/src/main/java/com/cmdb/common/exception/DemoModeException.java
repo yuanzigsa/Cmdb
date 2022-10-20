@@ -3,7 +3,7 @@ package com.cmdb.common.exception;
 /**
  * 演示模式异常
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class DemoModeException extends RuntimeException
 {

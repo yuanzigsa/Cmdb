@@ -182,12 +182,12 @@
                 <version>${cmdb.version}</version>
             </dependency>
 
-<!--            &lt;!&ndash;资产管理&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>com.cmdb</groupId>-->
-<!--                <artifactId>asset_management</artifactId>-->
-<!--                <version>${cmdb.version}</version>-->
-<!--            </dependency>-->
+            <!--资产管理-->
+            <dependency>
+                <groupId>com.cmdb</groupId>
+                <artifactId>cmdb-asset</artifactId>
+                <version>${cmdb.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -199,7 +199,7 @@
         <module>cmdb-quartz</module>
         <module>cmdb-generator</module>
         <module>cmdb-common</module>
-<!--        <module>asset_management</module>-->
+        <module>cmdb-asset</module>
     </modules>
     <packaging>pom</packaging>
 

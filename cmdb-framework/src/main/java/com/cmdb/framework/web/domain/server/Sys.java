@@ -3,7 +3,7 @@ package com.cmdb.framework.web.domain.server;
 /**
  * 系统相关信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class Sys
 {

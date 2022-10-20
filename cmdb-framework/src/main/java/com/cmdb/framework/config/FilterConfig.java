@@ -15,7 +15,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * Filter配置
  *
- * @author ruoyi
+ * @author yuanzi
  */
 @Configuration
 public class FilterConfig

@@ -10,7 +10,7 @@ import com.cmdb.common.exception.ServiceException;
 /**
  * 安全服务工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class SecurityUtils
 {

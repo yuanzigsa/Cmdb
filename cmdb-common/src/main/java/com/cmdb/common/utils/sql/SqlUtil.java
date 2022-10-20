@@ -6,7 +6,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * sql操作工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class SqlUtil
 {

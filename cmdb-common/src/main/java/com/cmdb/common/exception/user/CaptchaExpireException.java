@@ -3,7 +3,7 @@ package com.cmdb.common.exception.user;
 /**
  * 验证码失效异常类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class CaptchaExpireException extends UserException
 {

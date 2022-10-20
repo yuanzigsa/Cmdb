@@ -12,7 +12,7 @@ import com.cmdb.common.utils.http.HttpUtils;
 /**
  * 获取地址类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class AddressUtils
 {

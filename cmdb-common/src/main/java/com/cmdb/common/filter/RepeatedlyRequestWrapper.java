@@ -14,7 +14,7 @@ import com.cmdb.common.utils.http.HttpHelper;
 /**
  * 构建可重复读取inputStream的request
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper
 {

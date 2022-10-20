@@ -10,7 +10,7 @@ import com.cmdb.common.core.domain.entity.SysMenu;
 /**
  * Treeselect树结构实体类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class TreeSelect implements Serializable
 {

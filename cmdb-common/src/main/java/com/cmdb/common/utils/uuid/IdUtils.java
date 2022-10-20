@@ -3,7 +3,7 @@ package com.cmdb.common.utils.uuid;
 /**
  * ID生成器工具类
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class IdUtils
 {

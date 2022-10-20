@@ -3,7 +3,7 @@ package com.cmdb.common.constant;
 /**
  * 用户常量信息
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class UserConstants
 {

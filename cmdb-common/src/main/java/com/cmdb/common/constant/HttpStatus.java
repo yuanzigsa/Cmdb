@@ -3,7 +3,7 @@ package com.cmdb.common.constant;
 /**
  * 返回状态码
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class HttpStatus
 {

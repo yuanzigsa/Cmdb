@@ -30,7 +30,7 @@ import com.cmdb.system.domain.SysOperLog;
 /**
  * 操作日志记录处理
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @Aspect
 @Component

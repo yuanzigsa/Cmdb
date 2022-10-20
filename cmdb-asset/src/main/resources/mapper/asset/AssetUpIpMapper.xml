@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetUpIpMapper">
+    
+    <resultMap type="AssetUpIp" id="AssetUpIpResult">
+        <result property="number"    column="number"    />
+        <result property="ip"    column="ip"    />
+        <result property="company"    column="company"    />
+        <result property="room"    column="room"    />
+    </resultMap>
+
+    <sql id="selectAssetUpIpVo">
+        select number, ip, company, room from asset_up_ip
+    </sql>
+
+    <select id="selectAssetUpIpList" parameterType="AssetUpIp" resultMap="AssetUpIpResult">
+        <include refid="selectAssetUpIpVo"/>
+        <where>  
+            <if test="ip != null  and ip != ''"> and ip = #{ip}</if>
+            <if test="company != null  and company != ''"> and company = #{company}</if>
+            <if test="room != null  and room != ''"> and room like concat('%', #{room}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetUpIpByNumber" parameterType="Long" resultMap="AssetUpIpResult">
+        <include refid="selectAssetUpIpVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetUpIp" parameterType="AssetUpIp" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_up_ip
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">ip,</if>
+            <if test="company != null">company,</if>
+            <if test="room != null">room,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">#{ip},</if>
+            <if test="company != null">#{company},</if>
+            <if test="room != null">#{room},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetUpIp" parameterType="AssetUpIp">
+        update asset_up_ip
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="company != null">company = #{company},</if>
+            <if test="room != null">room = #{room},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetUpIpByNumber" parameterType="Long">
+        delete from asset_up_ip where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetUpIpByNumbers" parameterType="String">
+        delete from asset_up_ip where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

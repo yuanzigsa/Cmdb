@@ -11,7 +11,7 @@ import com.cmdb.common.core.domain.BaseEntity;
 /**
  * 参数配置表 sys_config
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class SysConfig extends BaseEntity
 {

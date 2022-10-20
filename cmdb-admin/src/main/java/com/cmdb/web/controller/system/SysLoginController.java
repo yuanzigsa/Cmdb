@@ -20,7 +20,7 @@ import com.cmdb.system.service.ISysMenuService;
 /**
  * 登录验证
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 @RestController
 public class SysLoginController

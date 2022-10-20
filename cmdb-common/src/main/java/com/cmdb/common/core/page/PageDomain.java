@@ -5,7 +5,7 @@ import com.cmdb.common.utils.StringUtils;
 /**
  * 分页数据
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class PageDomain
 {

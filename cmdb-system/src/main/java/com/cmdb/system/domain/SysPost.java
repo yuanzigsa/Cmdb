@@ -11,7 +11,7 @@ import com.cmdb.common.core.domain.BaseEntity;
 /**
  * 岗位表 sys_post
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public class SysPost extends BaseEntity
 {

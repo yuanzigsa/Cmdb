@@ -3,7 +3,7 @@ package com.cmdb.common.utils.poi;
 /**
  * Excel数据格式处理适配器
  * 
- * @author ruoyi
+ * @author yuanzi
  */
 public interface ExcelHandlerAdapter
 {

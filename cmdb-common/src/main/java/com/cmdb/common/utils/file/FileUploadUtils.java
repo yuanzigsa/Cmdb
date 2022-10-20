@@ -18,7 +18,7 @@ import com.cmdb.common.utils.uuid.Seq;
 /**
  * 文件上传工具类
  *
- * @author ruoyi
+ * @author yuanzi
  */
 public class FileUploadUtils
 {
