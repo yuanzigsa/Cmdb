@@ -9,7 +9,7 @@ import com.cmdb.common.core.domain.BaseEntity;
  * 上联IP资源对象 asset_up_ip
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 public class AssetUpIp extends BaseEntity
 {

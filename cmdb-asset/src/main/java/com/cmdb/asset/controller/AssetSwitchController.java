@@ -25,7 +25,7 @@ import com.cmdb.common.core.page.TableDataInfo;
  * 交换机管理Controller
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 @RestController
 @RequestMapping("/asset/switchMan")

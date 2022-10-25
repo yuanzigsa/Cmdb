@@ -7,7 +7,7 @@ import com.cmdb.asset.domain.AssetSwitch;
  * 交换机管理Mapper接口
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 public interface AssetSwitchMapper 
 {

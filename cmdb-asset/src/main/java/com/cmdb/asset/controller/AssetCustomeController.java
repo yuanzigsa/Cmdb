@@ -25,7 +25,7 @@ import com.cmdb.common.core.page.TableDataInfo;
  * 客户资产Controller
  * 
  * @author yuanzi
- * @date 2022-10-20
+ * @date 2022-10-24
  */
 @RestController
 @RequestMapping("/asset/custome")

@@ -20,7 +20,7 @@
       <el-form-item label="所属机房" prop="room">
         <el-select v-model="queryParams.room" placeholder="请选择所属机房" clearable>
           <el-option
-            v-for="dict in dict.type.asset_business"
+            v-for="dict in dict.type.it_room"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -77,12 +77,11 @@
 
     <el-table v-loading="loading" :data="ipList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-<!--      <el-table-column label="资产序号" align="center" prop="number" />-->
       <el-table-column label="IP" align="center" prop="ip" />
       <el-table-column label="归属" align="center" prop="company" />
       <el-table-column label="所属机房" align="center" prop="room">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.asset_business" :value="scope.row.room"/>
+          <dict-tag :options="dict.type.it_room" :value="scope.row.room"/>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -125,7 +124,7 @@
         <el-form-item label="所属机房" prop="room">
           <el-select v-model="form.room" placeholder="请选择所属机房">
             <el-option
-              v-for="dict in dict.type.asset_business"
+              v-for="dict in dict.type.it_room"
               :key="dict.value"
               :label="dict.label"
 :value="dict.value"
@@ -146,7 +145,7 @@ import { listIp, getIp, delIp, addIp, updateIp } from "@/api/asset/ip";
 
 export default {
   name: "Ip",
-  dicts: ['asset_business'],
+  dicts: ['it_room'],
   data() {
     return {
       // 遮罩层

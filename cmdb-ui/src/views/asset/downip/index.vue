@@ -20,7 +20,7 @@
       <el-form-item label="所属机房" prop="room">
         <el-select v-model="queryParams.room" placeholder="请选择所属机房" clearable>
           <el-option
-            v-for="dict in dict.type.device_type"
+            v-for="dict in dict.type.it_room"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -87,12 +87,11 @@
 
     <el-table v-loading="loading" :data="downipList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-<!--      <el-table-column label="资产序号" align="center" prop="number" />-->
       <el-table-column label="IP" align="center" prop="ip" />
       <el-table-column label="归属" align="center" prop="company" />
       <el-table-column label="所属机房" align="center" prop="room">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.device_type" :value="scope.row.room"/>
+          <dict-tag :options="dict.type.it_room" :value="scope.row.room"/>
         </template>
       </el-table-column>
       <el-table-column label="业务类型" align="center" prop="business">
@@ -140,7 +139,7 @@
         <el-form-item label="所属机房" prop="room">
           <el-select v-model="form.room" placeholder="请选择所属机房">
             <el-option
-              v-for="dict in dict.type.device_type"
+              v-for="dict in dict.type.it_room"
               :key="dict.value"
               :label="dict.label"
 :value="dict.value"
@@ -171,7 +170,7 @@ import { listDownip, getDownip, delDownip, addDownip, updateDownip } from "@/api
 
 export default {
   name: "Downip",
-  dicts: ['asset_business', 'device_type'],
+  dicts: ['asset_business', 'it_room'],
   data() {
     return {
       // 遮罩层

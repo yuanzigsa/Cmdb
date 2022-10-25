@@ -6,33 +6,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="AssetCustome" id="AssetCustomeResult">
         <result property="number"    column="number"    />
-        <result property="sn"    column="SN"    />
-        <result property="设备类型"    column="设备类型"    />
-        <result property="客户归属"    column="客户归属"    />
-        <result property="上架时间"    column="上架时间"    />
-        <result property="业务ip"    column="业务IP"    />
-        <result property="管理ip"    column="管理IP"    />
-        <result property="机柜编号"    column="机柜编号"    />
-        <result property="所属机房"    column="所属机房"    />
-        <result property="业务类型"    column="业务类型"    />
+        <result property="sn"    column="sn"    />
+        <result property="deviceType"    column="device_type"    />
+        <result property="deviceModel"    column="device_model"    />
+        <result property="ascription"    column="ascription"    />
+        <result property="upTime"    column="up_time"    />
+        <result property="businessIp"    column="business_ip"    />
+        <result property="manageIp"    column="manage_ip"    />
+        <result property="cabinetNo"    column="cabinet_no"    />
+        <result property="room"    column="room"    />
+        <result property="businessType"    column="business_type"    />
     </resultMap>
 
     <sql id="selectAssetCustomeVo">
-        select number, SN, 设备类型, 客户归属, 上架时间, 业务IP, 管理IP, 机柜编号, 所属机房, 业务类型 from asset_custome
+        select number, sn, device_type, device_model, ascription, up_time, business_ip, manage_ip, cabinet_no, room, business_type from asset_custome
     </sql>
 
     <select id="selectAssetCustomeList" parameterType="AssetCustome" resultMap="AssetCustomeResult">
         <include refid="selectAssetCustomeVo"/>
         <where>  
-            <if test="sn != null  and sn != ''"> and SN = #{sn}</if>
-            <if test="设备类型 != null  and 设备类型 != ''"> and 设备类型 = #{设备类型}</if>
-            <if test="客户归属 != null  and 客户归属 != ''"> and 客户归属 = #{客户归属}</if>
-            <if test="上架时间 != null  and 上架时间 != ''"> and 上架时间 = #{上架时间}</if>
-            <if test="业务ip != null  and 业务ip != ''"> and 业务IP = #{业务ip}</if>
-            <if test="管理ip != null  and 管理ip != ''"> and 管理IP = #{管理ip}</if>
-            <if test="机柜编号 != null  and 机柜编号 != ''"> and 机柜编号 = #{机柜编号}</if>
-            <if test="所属机房 != null  and 所属机房 != ''"> and 所属机房 = #{所属机房}</if>
-            <if test="业务类型 != null  and 业务类型 != ''"> and 业务类型 = #{业务类型}</if>
+            <if test="sn != null  and sn != ''"> and sn = #{sn}</if>
+            <if test="deviceType != null  and deviceType != ''"> and device_type = #{deviceType}</if>
+            <if test="deviceModel != null  and deviceModel != ''"> and device_model = #{deviceModel}</if>
+            <if test="ascription != null  and ascription != ''"> and ascription = #{ascription}</if>
+            <if test="upTime != null  and upTime != ''"> and up_time = #{upTime}</if>
+            <if test="businessIp != null  and businessIp != ''"> and business_ip = #{businessIp}</if>
+            <if test="manageIp != null  and manageIp != ''"> and manage_ip = #{manageIp}</if>
+            <if test="cabinetNo != null  and cabinetNo != ''"> and cabinet_no = #{cabinetNo}</if>
+            <if test="room != null  and room != ''"> and room = #{room}</if>
+            <if test="businessType != null  and businessType != ''"> and business_type = #{businessType}</if>
         </where>
     </select>
     
@@ -45,42 +47,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into asset_custome
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="number != null">number,</if>
-            <if test="sn != null">SN,</if>
-            <if test="设备类型 != null">设备类型,</if>
-            <if test="客户归属 != null">客户归属,</if>
-            <if test="上架时间 != null">上架时间,</if>
-            <if test="业务ip != null">业务IP,</if>
-            <if test="管理ip != null">管理IP,</if>
-            <if test="机柜编号 != null">机柜编号,</if>
-            <if test="所属机房 != null">所属机房,</if>
-            <if test="业务类型 != null">业务类型,</if>
+            <if test="sn != null">sn,</if>
+            <if test="deviceType != null">device_type,</if>
+            <if test="deviceModel != null">device_model,</if>
+            <if test="ascription != null">ascription,</if>
+            <if test="upTime != null">up_time,</if>
+            <if test="businessIp != null">business_ip,</if>
+            <if test="manageIp != null">manage_ip,</if>
+            <if test="cabinetNo != null">cabinet_no,</if>
+            <if test="room != null">room,</if>
+            <if test="businessType != null">business_type,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="number != null">#{number},</if>
             <if test="sn != null">#{sn},</if>
-            <if test="设备类型 != null">#{设备类型},</if>
-            <if test="客户归属 != null">#{客户归属},</if>
-            <if test="上架时间 != null">#{上架时间},</if>
-            <if test="业务ip != null">#{业务ip},</if>
-            <if test="管理ip != null">#{管理ip},</if>
-            <if test="机柜编号 != null">#{机柜编号},</if>
-            <if test="所属机房 != null">#{所属机房},</if>
-            <if test="业务类型 != null">#{业务类型},</if>
+            <if test="deviceType != null">#{deviceType},</if>
+            <if test="deviceModel != null">#{deviceModel},</if>
+            <if test="ascription != null">#{ascription},</if>
+            <if test="upTime != null">#{upTime},</if>
+            <if test="businessIp != null">#{businessIp},</if>
+            <if test="manageIp != null">#{manageIp},</if>
+            <if test="cabinetNo != null">#{cabinetNo},</if>
+            <if test="room != null">#{room},</if>
+            <if test="businessType != null">#{businessType},</if>
          </trim>
     </insert>
 
     <update id="updateAssetCustome" parameterType="AssetCustome">
         update asset_custome
         <trim prefix="SET" suffixOverrides=",">
-            <if test="sn != null">SN = #{sn},</if>
-            <if test="设备类型 != null">设备类型 = #{设备类型},</if>
-            <if test="客户归属 != null">客户归属 = #{客户归属},</if>
-            <if test="上架时间 != null">上架时间 = #{上架时间},</if>
-            <if test="业务ip != null">业务IP = #{业务ip},</if>
-            <if test="管理ip != null">管理IP = #{管理ip},</if>
-            <if test="机柜编号 != null">机柜编号 = #{机柜编号},</if>
-            <if test="所属机房 != null">所属机房 = #{所属机房},</if>
-            <if test="业务类型 != null">业务类型 = #{业务类型},</if>
+            <if test="sn != null">sn = #{sn},</if>
+            <if test="deviceType != null">device_type = #{deviceType},</if>
+            <if test="deviceModel != null">device_model = #{deviceModel},</if>
+            <if test="ascription != null">ascription = #{ascription},</if>
+            <if test="upTime != null">up_time = #{upTime},</if>
+            <if test="businessIp != null">business_ip = #{businessIp},</if>
+            <if test="manageIp != null">manage_ip = #{manageIp},</if>
+            <if test="cabinetNo != null">cabinet_no = #{cabinetNo},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="businessType != null">business_type = #{businessType},</if>
         </trim>
         where number = #{number}
     </update>

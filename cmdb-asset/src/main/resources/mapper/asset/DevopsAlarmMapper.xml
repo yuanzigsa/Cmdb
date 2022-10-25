@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.DevopsAlarmMapper">
+    
+    <resultMap type="DevopsAlarm" id="DevopsAlarmResult">
+        <result property="number"    column="number"    />
+        <result property="alarmHostname"    column="alarm_hostname"    />
+        <result property="alarmEvent"    column="alarm_event"    />
+        <result property="alarmLevel"    column="alarm_level"    />
+        <result property="alarmInfomation"    column="alarm_infomation"    />
+        <result property="alarmTime"    column="alarm_time"    />
+        <result property="alarmEventId"    column="alarm_event_id"    />
+    </resultMap>
+
+    <sql id="selectDevopsAlarmVo">
+        select number, alarm_hostname, alarm_event, alarm_level, alarm_infomation, alarm_time, alarm_event_id from devops_alarm
+    </sql>
+
+    <select id="selectDevopsAlarmList" parameterType="DevopsAlarm" resultMap="DevopsAlarmResult">
+        <include refid="selectDevopsAlarmVo"/>
+        <where>  
+            <if test="alarmHostname != null  and alarmHostname != ''"> and alarm_hostname like concat('%', #{alarmHostname}, '%')</if>
+            <if test="alarmEvent != null  and alarmEvent != ''"> and alarm_event = #{alarmEvent}</if>
+            <if test="alarmLevel != null  and alarmLevel != ''"> and alarm_level = #{alarmLevel}</if>
+            <if test="alarmInfomation != null  and alarmInfomation != ''"> and alarm_infomation = #{alarmInfomation}</if>
+            <if test="alarmTime != null "> and alarm_time = #{alarmTime}</if>
+            <if test="alarmEventId != null "> and alarm_event_id = #{alarmEventId}</if>
+        </where>
+    </select>
+    
+    <select id="selectDevopsAlarmByNumber" parameterType="Long" resultMap="DevopsAlarmResult">
+        <include refid="selectDevopsAlarmVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertDevopsAlarm" parameterType="DevopsAlarm" useGeneratedKeys="true" keyProperty="number">
+        insert into devops_alarm
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alarmHostname != null">alarm_hostname,</if>
+            <if test="alarmEvent != null">alarm_event,</if>
+            <if test="alarmLevel != null">alarm_level,</if>
+            <if test="alarmInfomation != null">alarm_infomation,</if>
+            <if test="alarmTime != null">alarm_time,</if>
+            <if test="alarmEventId != null">alarm_event_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alarmHostname != null">#{alarmHostname},</if>
+            <if test="alarmEvent != null">#{alarmEvent},</if>
+            <if test="alarmLevel != null">#{alarmLevel},</if>
+            <if test="alarmInfomation != null">#{alarmInfomation},</if>
+            <if test="alarmTime != null">#{alarmTime},</if>
+            <if test="alarmEventId != null">#{alarmEventId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDevopsAlarm" parameterType="DevopsAlarm">
+        update devops_alarm
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="alarmHostname != null">alarm_hostname = #{alarmHostname},</if>
+            <if test="alarmEvent != null">alarm_event = #{alarmEvent},</if>
+            <if test="alarmLevel != null">alarm_level = #{alarmLevel},</if>
+            <if test="alarmInfomation != null">alarm_infomation = #{alarmInfomation},</if>
+            <if test="alarmTime != null">alarm_time = #{alarmTime},</if>
+            <if test="alarmEventId != null">alarm_event_id = #{alarmEventId},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteDevopsAlarmByNumber" parameterType="Long">
+        delete from devops_alarm where number = #{number}
+    </delete>
+
+    <delete id="deleteDevopsAlarmByNumbers" parameterType="String">
+        delete from devops_alarm where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

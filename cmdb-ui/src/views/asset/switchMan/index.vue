@@ -9,6 +9,16 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="设备类型" prop="deviceType">
+        <el-select v-model="queryParams.deviceType" placeholder="请选择设备类型" clearable>
+          <el-option
+            v-for="dict in dict.type.device_type"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item label="设备型号" prop="deviceModel">
         <el-input
           v-model="queryParams.deviceModel"
@@ -25,13 +35,35 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="机柜编号" prop="cabinetNo">
+        <el-select v-model="queryParams.cabinetNo" placeholder="请选择机柜编号" clearable>
+          <el-option
+            v-for="dict in dict.type.cabinet_number"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item label="所属机房" prop="room">
-        <el-input
-          v-model="queryParams.room"
-          placeholder="请输入所属机房"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.room" placeholder="请选择所属机房" clearable>
+          <el-option
+            v-for="dict in dict.type.it_room"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="业务类型" prop="businessType">
+        <el-select v-model="queryParams.businessType" placeholder="请选择业务类型" clearable>
+          <el-option
+            v-for="dict in dict.type.asset_business"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -83,7 +115,6 @@
 
     <el-table v-loading="loading" :data="switchManList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-<!--      <el-table-column label="资产序号" align="center" prop="number" />-->
       <el-table-column label="SN编号" align="center" prop="sn" />
       <el-table-column label="设备类型" align="center" prop="deviceType">
         <template slot-scope="scope">
@@ -92,8 +123,16 @@
       </el-table-column>
       <el-table-column label="设备型号" align="center" prop="deviceModel" />
       <el-table-column label="管理IP" align="center" prop="manegeIp" />
-      <el-table-column label="机柜编号" align="center" prop="cabinetNo" />
-      <el-table-column label="所属机房" align="center" prop="room" />
+      <el-table-column label="机柜编号" align="center" prop="cabinetNo">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.cabinet_number" :value="scope.row.cabinetNo"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="所属机房" align="center" prop="room">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.it_room" :value="scope.row.room"/>
+        </template>
+      </el-table-column>
       <el-table-column label="业务类型" align="center" prop="businessType">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.asset_business" :value="scope.row.businessType"/>
@@ -151,10 +190,24 @@
           <el-input v-model="form.manegeIp" placeholder="请输入管理IP" />
         </el-form-item>
         <el-form-item label="机柜编号" prop="cabinetNo">
-          <el-input v-model="form.cabinetNo" placeholder="请输入机柜编号" />
+          <el-select v-model="form.cabinetNo" placeholder="请选择机柜编号">
+            <el-option
+              v-for="dict in dict.type.cabinet_number"
+              :key="dict.value"
+              :label="dict.label"
+:value="dict.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="所属机房" prop="room">
-          <el-input v-model="form.room" placeholder="请输入所属机房" />
+          <el-select v-model="form.room" placeholder="请选择所属机房">
+            <el-option
+              v-for="dict in dict.type.it_room"
+              :key="dict.value"
+              :label="dict.label"
+:value="dict.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="业务类型" prop="businessType">
           <el-select v-model="form.businessType" placeholder="请选择业务类型">
@@ -167,7 +220,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="端口互联">
-          <editor v-model="form.portInterconnetion" :min-height="192"/>
+          <file-upload v-model="form.portInterconnetion"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -183,7 +236,7 @@ import { listSwitchMan, getSwitchMan, delSwitchMan, addSwitchMan, updateSwitchMa
 
 export default {
   name: "SwitchMan",
-  dicts: ['asset_business', 'device_type'],
+  dicts: ['cabinet_number', 'asset_business', 'device_type', 'it_room'],
   data() {
     return {
       // 遮罩层
@@ -207,7 +260,7 @@ export default {
       // 查询参数
       queryParams: {
         pageNum: 1,
-        pageSize: 13,
+        pageSize: 10,
         sn: null,
         deviceType: null,
         deviceModel: null,

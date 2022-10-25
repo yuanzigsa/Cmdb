@@ -11,7 +11,7 @@ import com.cmdb.asset.service.IAssetDownipService;
  * 客户IP资源Service业务层处理
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 @Service
 public class AssetDownipServiceImpl implements IAssetDownipService 

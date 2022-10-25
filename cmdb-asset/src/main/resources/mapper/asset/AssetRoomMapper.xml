@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetRoomMapper">
+    
+    <resultMap type="AssetRoom" id="AssetRoomResult">
+        <result property="number"    column="number"    />
+        <result property="cabinetName"    column="cabinet_name"    />
+        <result property="businessType"    column="business_type"    />
+        <result property="bandwidth"    column="bandwidth"    />
+        <result property="address"    column="address"    />
+        <result property="contact"    column="contact"    />
+        <result property="administrator"    column="administrator"    />
+    </resultMap>
+
+    <sql id="selectAssetRoomVo">
+        select number, cabinet_name, business_type, bandwidth, address, contact, administrator from asset_room
+    </sql>
+
+    <select id="selectAssetRoomList" parameterType="AssetRoom" resultMap="AssetRoomResult">
+        <include refid="selectAssetRoomVo"/>
+        <where>  
+            <if test="cabinetName != null  and cabinetName != ''"> and cabinet_name like concat('%', #{cabinetName}, '%')</if>
+            <if test="businessType != null  and businessType != ''"> and business_type = #{businessType}</if>
+            <if test="bandwidth != null  and bandwidth != ''"> and bandwidth = #{bandwidth}</if>
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="contact != null  and contact != ''"> and contact = #{contact}</if>
+            <if test="administrator != null  and administrator != ''"> and administrator = #{administrator}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetRoomByNumber" parameterType="Long" resultMap="AssetRoomResult">
+        <include refid="selectAssetRoomVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetRoom" parameterType="AssetRoom" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_room
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cabinetName != null">cabinet_name,</if>
+            <if test="businessType != null">business_type,</if>
+            <if test="bandwidth != null">bandwidth,</if>
+            <if test="address != null">address,</if>
+            <if test="contact != null">contact,</if>
+            <if test="administrator != null">administrator,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cabinetName != null">#{cabinetName},</if>
+            <if test="businessType != null">#{businessType},</if>
+            <if test="bandwidth != null">#{bandwidth},</if>
+            <if test="address != null">#{address},</if>
+            <if test="contact != null">#{contact},</if>
+            <if test="administrator != null">#{administrator},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetRoom" parameterType="AssetRoom">
+        update asset_room
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cabinetName != null">cabinet_name = #{cabinetName},</if>
+            <if test="businessType != null">business_type = #{businessType},</if>
+            <if test="bandwidth != null">bandwidth = #{bandwidth},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="contact != null">contact = #{contact},</if>
+            <if test="administrator != null">administrator = #{administrator},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetRoomByNumber" parameterType="Long">
+        delete from asset_room where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetRoomByNumbers" parameterType="String">
+        delete from asset_room where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

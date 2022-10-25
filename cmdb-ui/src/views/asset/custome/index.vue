@@ -9,56 +9,68 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="设备类型" prop="设备类型">
+      <el-form-item label="设备类型" prop="deviceType">
+        <el-select v-model="queryParams.deviceType" placeholder="请选择设备类型" clearable>
+          <el-option
+            v-for="dict in dict.type.device_type"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="设备型号" prop="deviceModel">
         <el-input
-          v-model="queryParams.设备类型"
-          placeholder="请输入设备类型"
+          v-model="queryParams.deviceModel"
+          placeholder="请输入设备型号"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="客户归属" prop="客户归属">
+      <el-form-item label="客户归属" prop="ascription">
         <el-input
-          v-model="queryParams.客户归属"
+          v-model="queryParams.ascription"
           placeholder="请输入客户归属"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="上架时间" prop="上架时间">
-        <el-date-picker clearable
-          v-model="queryParams.上架时间"
-          type="date"
-          value-format="yyyy-MM-dd"
-          placeholder="请选择上架时间">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item label="业务IP" prop="业务ip">
+      <el-form-item label="上架时间" prop="upTime">
         <el-input
-          v-model="queryParams.业务ip"
+          v-model="queryParams.upTime"
+          placeholder="请输入上架时间"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="业务IP" prop="businessIp">
+        <el-input
+          v-model="queryParams.businessIp"
           placeholder="请输入业务IP"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="管理IP" prop="管理ip">
+      <el-form-item label="管理IP" prop="manageIp">
         <el-input
-          v-model="queryParams.管理ip"
+          v-model="queryParams.manageIp"
           placeholder="请输入管理IP"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="机柜编号" prop="机柜编号">
-        <el-input
-          v-model="queryParams.机柜编号"
-          placeholder="请输入机柜编号"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+      <el-form-item label="机柜编号" prop="cabinetNo">
+        <el-select v-model="queryParams.cabinetNo" placeholder="请选择机柜编号" clearable>
+          <el-option
+            v-for="dict in dict.type.cabinet_number"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
-      <el-form-item label="所属机房" prop="所属机房">
-        <el-select v-model="queryParams.所属机房" placeholder="请选择所属机房" clearable>
+      <el-form-item label="所属机房" prop="room">
+        <el-select v-model="queryParams.room" placeholder="请选择所属机房" clearable>
           <el-option
             v-for="dict in dict.type.it_room"
             :key="dict.value"
@@ -67,8 +79,8 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="业务类型" prop="业务类型">
-        <el-select v-model="queryParams.业务类型" placeholder="请选择业务类型" clearable>
+      <el-form-item label="业务类型" prop="businessType">
+        <el-select v-model="queryParams.businessType" placeholder="请选择业务类型" clearable>
           <el-option
             v-for="dict in dict.type.asset_business"
             :key="dict.value"
@@ -128,24 +140,29 @@
     <el-table v-loading="loading" :data="customeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="SN编号" align="center" prop="sn" />
-      <el-table-column label="设备类型" align="center" prop="设备类型" />
-      <el-table-column label="客户归属" align="center" prop="客户归属" />
-      <el-table-column label="上架时间" align="center" prop="上架时间" width="180">
+      <el-table-column label="设备类型" align="center" prop="deviceType">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.上架时间, '{y}-{m}-{d}') }}</span>
+          <dict-tag :options="dict.type.device_type" :value="scope.row.deviceType"/>
         </template>
       </el-table-column>
-      <el-table-column label="业务IP" align="center" prop="业务ip" />
-      <el-table-column label="管理IP" align="center" prop="管理ip" />
-      <el-table-column label="机柜编号" align="center" prop="机柜编号" />
-      <el-table-column label="所属机房" align="center" prop="所属机房">
+      <el-table-column label="设备型号" align="center" prop="deviceModel" />
+      <el-table-column label="客户归属" align="center" prop="ascription" />
+      <el-table-column label="上架时间" align="center" prop="upTime" />
+      <el-table-column label="业务IP" align="center" prop="businessIp" />
+      <el-table-column label="管理IP" align="center" prop="manageIp" />
+      <el-table-column label="机柜编号" align="center" prop="cabinetNo">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.it_room" :value="scope.row.所属机房"/>
+          <dict-tag :options="dict.type.cabinet_number" :value="scope.row.cabinetNo"/>
         </template>
       </el-table-column>
-      <el-table-column label="业务类型" align="center" prop="业务类型">
+      <el-table-column label="所属机房" align="center" prop="room">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.asset_business" :value="scope.row.业务类型"/>
+          <dict-tag :options="dict.type.it_room" :value="scope.row.room"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="业务类型" align="center" prop="businessType">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.asset_business" :value="scope.row.businessType"/>
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -182,31 +199,43 @@
         <el-form-item label="SN编号" prop="sn">
           <el-input v-model="form.sn" placeholder="请输入SN编号" />
         </el-form-item>
-        <el-form-item label="设备类型" prop="设备类型">
-          <el-input v-model="form.设备类型" placeholder="请输入设备类型" />
+        <el-form-item label="设备类型" prop="deviceType">
+          <el-select v-model="form.deviceType" placeholder="请选择设备类型">
+            <el-option
+              v-for="dict in dict.type.device_type"
+              :key="dict.value"
+              :label="dict.label"
+:value="dict.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="客户归属" prop="客户归属">
-          <el-input v-model="form.客户归属" placeholder="请输入客户归属" />
+        <el-form-item label="设备型号" prop="deviceModel">
+          <el-input v-model="form.deviceModel" placeholder="请输入设备型号" />
         </el-form-item>
-        <el-form-item label="上架时间" prop="上架时间">
-          <el-date-picker clearable
-            v-model="form.上架时间"
-            type="date"
-            value-format="yyyy-MM-dd"
-            placeholder="请选择上架时间">
-          </el-date-picker>
+        <el-form-item label="客户归属" prop="ascription">
+          <el-input v-model="form.ascription" placeholder="请输入客户归属" />
         </el-form-item>
-        <el-form-item label="业务IP" prop="业务ip">
-          <el-input v-model="form.业务ip" placeholder="请输入业务IP" />
+        <el-form-item label="上架时间" prop="upTime">
+          <el-input v-model="form.upTime" placeholder="请输入上架时间" />
         </el-form-item>
-        <el-form-item label="管理IP" prop="管理ip">
-          <el-input v-model="form.管理ip" placeholder="请输入管理IP" />
+        <el-form-item label="业务IP" prop="businessIp">
+          <el-input v-model="form.businessIp" placeholder="请输入业务IP" />
         </el-form-item>
-        <el-form-item label="机柜编号" prop="机柜编号">
-          <el-input v-model="form.机柜编号" placeholder="请输入机柜编号" />
+        <el-form-item label="管理IP" prop="manageIp">
+          <el-input v-model="form.manageIp" placeholder="请输入管理IP" />
         </el-form-item>
-        <el-form-item label="所属机房" prop="所属机房">
-          <el-select v-model="form.所属机房" placeholder="请选择所属机房">
+        <el-form-item label="机柜编号" prop="cabinetNo">
+          <el-select v-model="form.cabinetNo" placeholder="请选择机柜编号">
+            <el-option
+              v-for="dict in dict.type.cabinet_number"
+              :key="dict.value"
+              :label="dict.label"
+:value="dict.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="所属机房" prop="room">
+          <el-select v-model="form.room" placeholder="请选择所属机房">
             <el-option
               v-for="dict in dict.type.it_room"
               :key="dict.value"
@@ -215,8 +244,8 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="业务类型" prop="业务类型">
-          <el-select v-model="form.业务类型" placeholder="请选择业务类型">
+        <el-form-item label="业务类型" prop="businessType">
+          <el-select v-model="form.businessType" placeholder="请选择业务类型">
             <el-option
               v-for="dict in dict.type.asset_business"
               :key="dict.value"
@@ -239,7 +268,7 @@ import { listCustome, getCustome, delCustome, addCustome, updateCustome } from "
 
 export default {
   name: "Custome",
-  dicts: ['asset_business', 'it_room'],
+  dicts: ['cabinet_number', 'asset_business', 'device_type', 'it_room'],
   data() {
     return {
       // 遮罩层
@@ -265,14 +294,15 @@ export default {
         pageNum: 1,
         pageSize: 10,
         sn: null,
-        设备类型: null,
-        客户归属: null,
-        上架时间: null,
-        业务ip: null,
-        管理ip: null,
-        机柜编号: null,
-        所属机房: null,
-        业务类型: null
+        deviceType: null,
+        deviceModel: null,
+        ascription: null,
+        upTime: null,
+        businessIp: null,
+        manageIp: null,
+        cabinetNo: null,
+        room: null,
+        businessType: null
       },
       // 表单参数
       form: {},
@@ -304,14 +334,15 @@ export default {
       this.form = {
         number: null,
         sn: null,
-        设备类型: null,
-        客户归属: null,
-        上架时间: null,
-        业务ip: null,
-        管理ip: null,
-        机柜编号: null,
-        所属机房: null,
-        业务类型: null
+        deviceType: null,
+        deviceModel: null,
+        ascription: null,
+        upTime: null,
+        businessIp: null,
+        manageIp: null,
+        cabinetNo: null,
+        room: null,
+        businessType: null
       };
       this.resetForm("form");
     },

@@ -7,7 +7,7 @@ import com.cmdb.asset.domain.AssetCustome;
  * 客户资产Mapper接口
  * 
  * @author yuanzi
- * @date 2022-10-20
+ * @date 2022-10-24
  */
 public interface AssetCustomeMapper 
 {

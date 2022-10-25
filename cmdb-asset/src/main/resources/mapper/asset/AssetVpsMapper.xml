@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetVpsMapper">
+    
+    <resultMap type="AssetVps" id="AssetVpsResult">
+        <result property="number"    column="number"    />
+        <result property="ip"    column="IP"    />
+        <result property="ascription"    column="ascription"    />
+        <result property="experitonTime"    column="experiton_time"    />
+        <result property="configuration"    column="configuration"    />
+    </resultMap>
+
+    <sql id="selectAssetVpsVo">
+        select number, IP, ascription, experiton_time, configuration from asset_vps
+    </sql>
+
+    <select id="selectAssetVpsList" parameterType="AssetVps" resultMap="AssetVpsResult">
+        <include refid="selectAssetVpsVo"/>
+        <where>  
+            <if test="ip != null  and ip != ''"> and IP = #{ip}</if>
+            <if test="ascription != null  and ascription != ''"> and ascription = #{ascription}</if>
+            <if test="experitonTime != null "> and experiton_time = #{experitonTime}</if>
+            <if test="configuration != null  and configuration != ''"> and configuration = #{configuration}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetVpsByNumber" parameterType="Long" resultMap="AssetVpsResult">
+        <include refid="selectAssetVpsVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetVps" parameterType="AssetVps" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_vps
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">IP,</if>
+            <if test="ascription != null">ascription,</if>
+            <if test="experitonTime != null">experiton_time,</if>
+            <if test="configuration != null">configuration,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">#{ip},</if>
+            <if test="ascription != null">#{ascription},</if>
+            <if test="experitonTime != null">#{experitonTime},</if>
+            <if test="configuration != null">#{configuration},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetVps" parameterType="AssetVps">
+        update asset_vps
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ip != null">IP = #{ip},</if>
+            <if test="ascription != null">ascription = #{ascription},</if>
+            <if test="experitonTime != null">experiton_time = #{experitonTime},</if>
+            <if test="configuration != null">configuration = #{configuration},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetVpsByNumber" parameterType="Long">
+        delete from asset_vps where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetVpsByNumbers" parameterType="String">
+        delete from asset_vps where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

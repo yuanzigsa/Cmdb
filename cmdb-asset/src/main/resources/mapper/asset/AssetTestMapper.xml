@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetTestMapper">
+    
+    <resultMap type="AssetTest" id="AssetTestResult">
+        <result property="number"    column="number"    />
+        <result property="room"    column="room"    />
+        <result property="state"    column="state"    />
+        <result property="os"    column="os"    />
+        <result property="costomer"    column="costomer"    />
+        <result property="startTime"    column="start_time"    />
+        <result property="testCycle"    column="test_cycle"    />
+        <result property="ascription"    column="ascription"    />
+        <result property="deviceModel"    column="device_model"    />
+        <result property="cabinetNumber"    column="cabinet_number"    />
+        <result property="switchInterface"    column="switch_interface"    />
+        <result property="passwd"    column="passwd"    />
+        <result property="onfiguration"    column="onfiguration"    />
+    </resultMap>
+
+    <sql id="selectAssetTestVo">
+        select number, room, state, os, costomer, start_time, test_cycle, ascription, device_model, cabinet_number, switch_interface, passwd, onfiguration from asset_test
+    </sql>
+
+    <select id="selectAssetTestList" parameterType="AssetTest" resultMap="AssetTestResult">
+        <include refid="selectAssetTestVo"/>
+        <where>  
+            <if test="room != null  and room != ''"> and room = #{room}</if>
+            <if test="state != null  and state != ''"> and state = #{state}</if>
+            <if test="os != null  and os != ''"> and os = #{os}</if>
+            <if test="costomer != null  and costomer != ''"> and costomer = #{costomer}</if>
+            <if test="startTime != null  and startTime != ''"> and start_time = #{startTime}</if>
+            <if test="testCycle != null  and testCycle != ''"> and test_cycle = #{testCycle}</if>
+            <if test="ascription != null  and ascription != ''"> and ascription = #{ascription}</if>
+            <if test="deviceModel != null  and deviceModel != ''"> and device_model = #{deviceModel}</if>
+            <if test="cabinetNumber != null  and cabinetNumber != ''"> and cabinet_number = #{cabinetNumber}</if>
+            <if test="switchInterface != null  and switchInterface != ''"> and switch_interface = #{switchInterface}</if>
+            <if test="passwd != null  and passwd != ''"> and passwd = #{passwd}</if>
+            <if test="onfiguration != null  and onfiguration != ''"> and onfiguration = #{onfiguration}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetTestByNumber" parameterType="Long" resultMap="AssetTestResult">
+        <include refid="selectAssetTestVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetTest" parameterType="AssetTest" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="room != null">room,</if>
+            <if test="state != null">state,</if>
+            <if test="os != null">os,</if>
+            <if test="costomer != null">costomer,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="testCycle != null">test_cycle,</if>
+            <if test="ascription != null">ascription,</if>
+            <if test="deviceModel != null">device_model,</if>
+            <if test="cabinetNumber != null">cabinet_number,</if>
+            <if test="switchInterface != null">switch_interface,</if>
+            <if test="passwd != null">passwd,</if>
+            <if test="onfiguration != null">onfiguration,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="room != null">#{room},</if>
+            <if test="state != null">#{state},</if>
+            <if test="os != null">#{os},</if>
+            <if test="costomer != null">#{costomer},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="testCycle != null">#{testCycle},</if>
+            <if test="ascription != null">#{ascription},</if>
+            <if test="deviceModel != null">#{deviceModel},</if>
+            <if test="cabinetNumber != null">#{cabinetNumber},</if>
+            <if test="switchInterface != null">#{switchInterface},</if>
+            <if test="passwd != null">#{passwd},</if>
+            <if test="onfiguration != null">#{onfiguration},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetTest" parameterType="AssetTest">
+        update asset_test
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="room != null">room = #{room},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="os != null">os = #{os},</if>
+            <if test="costomer != null">costomer = #{costomer},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="testCycle != null">test_cycle = #{testCycle},</if>
+            <if test="ascription != null">ascription = #{ascription},</if>
+            <if test="deviceModel != null">device_model = #{deviceModel},</if>
+            <if test="cabinetNumber != null">cabinet_number = #{cabinetNumber},</if>
+            <if test="switchInterface != null">switch_interface = #{switchInterface},</if>
+            <if test="passwd != null">passwd = #{passwd},</if>
+            <if test="onfiguration != null">onfiguration = #{onfiguration},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetTestByNumber" parameterType="Long">
+        delete from asset_test where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetTestByNumbers" parameterType="String">
+        delete from asset_test where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

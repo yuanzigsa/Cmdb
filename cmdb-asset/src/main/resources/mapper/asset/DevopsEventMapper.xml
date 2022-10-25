@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.DevopsEventMapper">
+    
+    <resultMap type="DevopsEvent" id="DevopsEventResult">
+        <result property="number"    column="number"    />
+        <result property="eventId"    column="event_id"    />
+        <result property="eventName"    column="event_name"    />
+        <result property="eventState"    column="event_state"    />
+        <result property="eventLevel"    column="event_level"    />
+        <result property="handledBy"    column="handled_by"    />
+        <result property="startDate"    column="start_date"    />
+        <result property="endDate"    column="end_date"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectDevopsEventVo">
+        select number, event_id, event_name, event_state, event_level, handled_by, start_date, end_date, remark from devops_event
+    </sql>
+
+    <select id="selectDevopsEventList" parameterType="DevopsEvent" resultMap="DevopsEventResult">
+        <include refid="selectDevopsEventVo"/>
+        <where>  
+            <if test="eventId != null "> and event_id = #{eventId}</if>
+            <if test="eventName != null  and eventName != ''"> and event_name like concat('%', #{eventName}, '%')</if>
+            <if test="eventState != null  and eventState != ''"> and event_state = #{eventState}</if>
+            <if test="eventLevel != null  and eventLevel != ''"> and event_level = #{eventLevel}</if>
+            <if test="handledBy != null  and handledBy != ''"> and handled_by = #{handledBy}</if>
+            <if test="startDate != null "> and start_date = #{startDate}</if>
+            <if test="endDate != null "> and end_date = #{endDate}</if>
+        </where>
+    </select>
+    
+    <select id="selectDevopsEventByNumber" parameterType="Long" resultMap="DevopsEventResult">
+        <include refid="selectDevopsEventVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertDevopsEvent" parameterType="DevopsEvent" useGeneratedKeys="true" keyProperty="number">
+        insert into devops_event
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="eventId != null">event_id,</if>
+            <if test="eventName != null">event_name,</if>
+            <if test="eventState != null">event_state,</if>
+            <if test="eventLevel != null">event_level,</if>
+            <if test="handledBy != null">handled_by,</if>
+            <if test="startDate != null">start_date,</if>
+            <if test="endDate != null">end_date,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="eventId != null">#{eventId},</if>
+            <if test="eventName != null">#{eventName},</if>
+            <if test="eventState != null">#{eventState},</if>
+            <if test="eventLevel != null">#{eventLevel},</if>
+            <if test="handledBy != null">#{handledBy},</if>
+            <if test="startDate != null">#{startDate},</if>
+            <if test="endDate != null">#{endDate},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDevopsEvent" parameterType="DevopsEvent">
+        update devops_event
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="eventId != null">event_id = #{eventId},</if>
+            <if test="eventName != null">event_name = #{eventName},</if>
+            <if test="eventState != null">event_state = #{eventState},</if>
+            <if test="eventLevel != null">event_level = #{eventLevel},</if>
+            <if test="handledBy != null">handled_by = #{handledBy},</if>
+            <if test="startDate != null">start_date = #{startDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteDevopsEventByNumber" parameterType="Long">
+        delete from devops_event where number = #{number}
+    </delete>
+
+    <delete id="deleteDevopsEventByNumbers" parameterType="String">
+        delete from devops_event where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

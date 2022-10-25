@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdb.asset.mapper.AssetCabinetMapper">
+    
+    <resultMap type="AssetCabinet" id="AssetCabinetResult">
+        <result property="number"    column="number"    />
+        <result property="cabinetNo"    column="cabinet_no"    />
+        <result property="room"    column="room"    />
+        <result property="businessType"    column="business_type"    />
+        <result property="cabinetLayout"    column="cabinet_layout"    />
+    </resultMap>
+
+    <sql id="selectAssetCabinetVo">
+        select number, cabinet_no, room, business_type, cabinet_layout from asset_cabinet
+    </sql>
+
+    <select id="selectAssetCabinetList" parameterType="AssetCabinet" resultMap="AssetCabinetResult">
+        <include refid="selectAssetCabinetVo"/>
+        <where>  
+            <if test="cabinetNo != null  and cabinetNo != ''"> and cabinet_no = #{cabinetNo}</if>
+            <if test="room != null  and room != ''"> and room = #{room}</if>
+            <if test="businessType != null  and businessType != ''"> and business_type = #{businessType}</if>
+            <if test="cabinetLayout != null  and cabinetLayout != ''"> and cabinet_layout = #{cabinetLayout}</if>
+        </where>
+    </select>
+    
+    <select id="selectAssetCabinetByNumber" parameterType="Long" resultMap="AssetCabinetResult">
+        <include refid="selectAssetCabinetVo"/>
+        where number = #{number}
+    </select>
+        
+    <insert id="insertAssetCabinet" parameterType="AssetCabinet" useGeneratedKeys="true" keyProperty="number">
+        insert into asset_cabinet
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cabinetNo != null">cabinet_no,</if>
+            <if test="room != null">room,</if>
+            <if test="businessType != null">business_type,</if>
+            <if test="cabinetLayout != null">cabinet_layout,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cabinetNo != null">#{cabinetNo},</if>
+            <if test="room != null">#{room},</if>
+            <if test="businessType != null">#{businessType},</if>
+            <if test="cabinetLayout != null">#{cabinetLayout},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAssetCabinet" parameterType="AssetCabinet">
+        update asset_cabinet
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cabinetNo != null">cabinet_no = #{cabinetNo},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="businessType != null">business_type = #{businessType},</if>
+            <if test="cabinetLayout != null">cabinet_layout = #{cabinetLayout},</if>
+        </trim>
+        where number = #{number}
+    </update>
+
+    <delete id="deleteAssetCabinetByNumber" parameterType="Long">
+        delete from asset_cabinet where number = #{number}
+    </delete>
+
+    <delete id="deleteAssetCabinetByNumbers" parameterType="String">
+        delete from asset_cabinet where number in 
+        <foreach item="number" collection="array" open="(" separator="," close=")">
+            #{number}
+        </foreach>
+    </delete>
+</mapper>

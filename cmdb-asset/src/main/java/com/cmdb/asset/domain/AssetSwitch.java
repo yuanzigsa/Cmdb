@@ -9,7 +9,7 @@ import com.cmdb.common.core.domain.BaseEntity;
  * 交换机管理对象 asset_switch
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 public class AssetSwitch extends BaseEntity
 {

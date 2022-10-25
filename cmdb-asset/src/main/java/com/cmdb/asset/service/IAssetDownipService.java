@@ -7,7 +7,7 @@ import com.cmdb.asset.domain.AssetDownip;
  * 客户IP资源Service接口
  * 
  * @author yuanzi
- * @date 2022-10-19
+ * @date 2022-10-24
  */
 public interface IAssetDownipService 
 {
