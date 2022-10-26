@@ -6,8 +6,6 @@
 <p align="center">
 </p>
 
-![Snipaste_2022-10-26_14-59-55](https://user-images.githubusercontent.com/30451380/197956708-a9a35d56-a026-40a0-9227-9b6df0936081.png)
-
 ## 平台简介
 
 * 前端采用Vue、Element UI。
@@ -37,5 +35,7 @@
 18. 缓存监控：对系统的缓存信息查询，命令统计等。
 19. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
+## 演示图
+![Snipaste_2022-10-26_14-59-55](https://user-images.githubusercontent.com/30451380/197956708-a9a35d56-a026-40a0-9227-9b6df0936081.png)
 
 
