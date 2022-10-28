@@ -1,96 +1,94 @@
 <template>
-  <div class="app-container home">
+<div class="app-container home">
     <el-row :gutter="20">
-      <el-col :sm="24" :lg="24">
-        <blockquote class="text-warning" style="font-size: 14px">
-          <p>欢迎！</p>
-        </blockquote>
-
-        <hr />
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :sm="24" :lg="12" style="padding-left: 20px">
-        <h2>世捷通资产运维管理系统</h2>
-        <p>
-          开发ing......
-        </p>
-        <p>
-          <b>当前版本:</b> <span>v1.0</span>
-        </p>
-      </el-col>
-
-      <el-col :sm="24" :lg="12" style="padding-left: 50px">
-        <el-row>
-          <el-col :span="12">
-            <h2>技术选型</h2>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="6">
-            <h4>后端技术</h4>
-            <ul>
-              <li>SpringBoot</li>
-              <li>Spring Security</li>
-              <li>JWT</li>
-              <li>MyBatis</li>
-              <li>Druid</li>
-              <li>Fastjson</li>
-              <li>...</li>
-            </ul>
-          </el-col>
-          <el-col :span="6">
-            <h4>前端技术</h4>
-            <ul>
-              <li>Vue</li>
-              <li>Vuex</li>
-              <li>Element-ui</li>
-              <li>Axios</li>
-              <li>Sass</li>
-              <li>Quill</li>
-              <li>...</li>
-            </ul>
-          </el-col>
-        </el-row>
-      </el-col>
-    </el-row>
-    <el-divider />
-    <el-row :gutter="20">
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
-        <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>监控告警</span>
-          </div>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="room">
           <div class="body">
-            <p>开发ing......</p>
+            <p class="padding">机房</p>
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
-        <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>关于</span>
-          </div>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="cabinet">
           <div class="body">
-            <p>开发ing......</p>
+            <p>机柜</p>
           </div>
         </el-card>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
-        <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>更新日志</span>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="ip">
+          <div class="body">
+            <p>IP</p>
           </div>
-          <el-collapse accordion>
-            <el-collapse-item title="v1.0 - 2022-10-24">
-              <ol>
-                <li>完成cmdb的基础功能</li>
-              </ol>
-            </el-collapse-item>
-          </el-collapse>
+        </el-card>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="server">
+          <div class="body">
+            <p>服务器</p>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="switch">
+          <div class="body">
+            <p>交换机</p>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col class="alarm1" :xs="12" :sm="12" :md="4" :lg="4">
+        <el-card class="alarm">
+          <div class="body">
+            <p>告警</p>
+          </div>
         </el-card>
       </el-col>
     </el-row>
+  <div class="jiange">
+
+  </div>
+    <el-row :gutter="20">
+      <el-col :xs="24" :sm="24" :md="12" :lg="15">
+        <el-card class="ping">
+          <div>
+            <p style="font-family: 'Open Sans', Arial, sans-serif;
+                      font-size: x-large;
+                      color: #324157;
+                      text-align: center;
+                      font-weight: bold">全国机房网络质量</p>
+            <div class="image" align="center">
+              <img src="../assets/images/network.png" width="817" height="635" >
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="12" :lg="9">
+        <div>
+        <el-card>
+          <div>
+            <p style="font-family: 'Open Sans', Arial, sans-serif;
+                      font-size: x-large;
+                      color: #324157;
+                      text-align: center;
+                      font-weight: bold">监控告警</p>
+          </div>
+        </el-card>
+          <div class="card-jiange"></div>
+          <el-card>
+            <div>
+              <p style="font-family: 'Open Sans', Arial, sans-serif;
+                      font-size: x-large;
+                      color: #324157;
+                      text-align: center;
+                      font-weight: bold">事件工单</p>
+            </div>
+          </el-card>
+        </div>
+      </el-col>
+    </el-row>
+  <div class="copyright">
+    <p style="color: black; text-align: center; font-size: small">Copyright © 2022 武汉世捷通网络信息技术有限公司</p>
+  </div>
   </div>
 </template>
 
@@ -172,6 +170,34 @@ export default {
       padding-inline-start: 40px;
     }
   }
+}
+.room {
+  background-color: #303133;
+}
+.cabinet {
+  background-color:#E6A23C ;
+}
+.ip {
+  background-color: #409EFF;
+}
+.server {
+  background-color: #67C23A;
+}
+.switch {
+  background-color: #909399;
+}
+.alarm {
+  background-color: #F56C6C;
+}
+.jiange {
+  margin-top: 25px;
+}
+p {
+  font-size: x-large;
+  color: white;
+}
+.card-jiange {
+  margin-top: 25px;
 }
 </style>
 

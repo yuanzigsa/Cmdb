@@ -140,7 +140,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="出口带宽" prop="bandwidth">
-          <el-input v-model="form.bandwidth" placeholder="请输入出口带宽" />
+          <el-input v-model="form.bandwidth" placeholder="请输入出口带宽,单位为G，如0.5G" suffix="GB" />
         </el-form-item>
         <el-form-item label="机房地址" prop="address">
           <el-input v-model="form.address" placeholder="请输入机房地址" />
