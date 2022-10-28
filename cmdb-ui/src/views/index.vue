@@ -55,7 +55,7 @@
                       font-size: x-large;
                       color: #324157;
                       text-align: center;
-                      font-weight: bold">全国机房网络质量</p>
+                      font-weight: bold">全国机房网络质量监控</p>
             <div class="image" align="center">
               <img src="../assets/images/network.png" width="817" height="635" >
             </div>
